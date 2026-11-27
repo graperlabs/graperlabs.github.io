@@ -164,6 +164,56 @@
     </div>
   </section>
 
+  <!-- ===================== ONTOLOGY FILM ===================== -->
+  <section class="section section--film" id="film">
+    <div class="film">
+      <div class="film__copy reveal">
+        <p class="eyebrow mono">01 — ONTOLOGY FILM</p>
+        <h2>The cluster, <span class="grad">in motion.</span></h2>
+        <p class="section__lead">
+          The same eleven-grape graph, rendered as a short film. Each berry takes its turn —
+          CINDIEL, AI Visual Lens, Data Ontology — and every edge shows the verb that carries a
+          signal from one capability to the next.
+        </p>
+        <ul class="film__specs">
+          <li><b class="mono">FRAME</b><span>1080 × 1920 · 9:16</span></li>
+          <li><b class="mono">LENGTH</b><span>13.8 s · loops</span></li>
+          <li><b class="mono">NODES</b><span>11 grapes · 1 stem</span></li>
+          <li><b class="mono">AUDIO</b><span>Soundtrack · starts muted</span></li>
+        </ul>
+        <div class="film__actions">
+          <button class="btn btn--ghost film__sound" id="filmSound" type="button" aria-pressed="false" aria-controls="ontologyFilm">
+            <span class="film__sound-state mono" id="filmSoundState">MUTED</span>
+            <span id="filmSoundLabel">Sound on</span>
+          </button>
+          <a class="btn btn--ghost" href="#ontology">Back to the graph</a>
+        </div>
+        <p class="film__hint">Autoplays muted and pauses off-screen. Turn the sound on here, or in the player's own control bar.</p>
+      </div>
+
+      <div class="film__stage reveal" data-delay="120">
+        <div class="film__frame">
+          <div class="film__bar mono">
+            <span>ONTOLOGY / MOTION</span>
+            <span class="film__bar-state"><i class="dot-live" aria-hidden="true"></i>LOOP</span>
+          </div>
+          <div class="film__screen">
+            <video id="ontologyFilm" class="film__video"
+              src="assets/graperlabs_ontology_motion.mp4"
+              poster="assets/ontology_motion_poster.jpg"
+              width="1080" height="1920"
+              autoplay muted loop playsinline controls preload="metadata"
+              aria-label="Graper Labs ontology motion film: the eleven grape nodes of one knowledge graph, highlighting CINDIEL, AI Visual Lens and Data Ontology in turn, ending on the line 'Turning small ideas into meaningful connections.'"></video>
+          </div>
+          <div class="film__bar film__bar--foot mono">
+            <span>GRAPER LABS · 2026</span>
+            <span>11 GRAPES / ONE CLUSTER</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== CINDIEL ===================== -->
   <section class="section section--cindiel" id="cindiel">
     <div class="cindiel">

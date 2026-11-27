@@ -807,6 +807,53 @@
     els.forEach(el => io.observe(el));
   }
 
+  /* ------------------------------ ontology film ----------------------------
+     Muted autoplay loop that pauses off-screen and can be unmuted from the
+     section itself, so the film never plays sound at someone unasked.
+     ------------------------------------------------------------------------ */
+  (function initFilm() {
+    const film = document.getElementById('ontologyFilm');
+    if (!film) return;
+    const btn = document.getElementById('filmSound');
+    const label = document.getElementById('filmSoundLabel');
+    const state = document.getElementById('filmSoundState');
+
+    function setSound(on) {
+      film.muted = !on;
+      if (on) {
+        if (film.volume === 0) film.volume = 1;
+        const p = film.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+      if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (label) label.textContent = on ? 'Sound off' : 'Sound on';
+      if (state) state.textContent = on ? 'SOUND ON' : 'MUTED';
+    }
+
+    if (btn) btn.addEventListener('click', () => setSound(film.muted));
+
+    if (REDUCED) {
+      film.autoplay = false;
+      film.removeAttribute('autoplay');
+      film.pause();
+      return;
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const p = film.play();
+            if (p && p.catch) p.catch(() => {});
+          } else {
+            film.pause();
+            if (!film.muted) setSound(false);
+          }
+        });
+      }, { threshold: 0.15 }).observe(film);
+    }
+  })();
+
   /* --------------------------------- boot --------------------------------- */
   buildCards();
   initFilters();
